@@ -9,14 +9,6 @@ body {
   background: rgb(108, 145, 255);
 }
 
-h1 {
-  text-align: center;
-  margin-top: 50px;
-  font-size: 50px;
-  color: white;
-  text-shadow: 5px 5px 15px rgb(43, 64, 125);
-}
-
 .app {
   background: white;
   width: 90%;
