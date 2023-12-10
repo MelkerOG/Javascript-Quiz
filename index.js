@@ -42,28 +42,57 @@ const questions = [
 ];
 
 const questionElement = document.getElementById("question");
-const answerButton = document.getElementById("true-false-btn");
-const nextButton = document.getElementById("next-btn");
+const trueBtn = document.querySelector(".trueBtn");
+const falseBtn = document.querySelector(".falseBtn");
+const nextBtn = document.getElementById("next-btn");
 
 let currentQuestion = 0;
 let score = 0;
 
 function displayQuestion() {
-  currentQuestion = 0;
-  score = 0;
-  nextButton.innerHTML = "Next";
-  showQuestion();
+  questionElement.textContent = questions[currentQuestion].question;
 }
 
-function showQuestion() {
-  let currentQuestion = questions[currentQuestion];
-  let questionNumber = currentQuestion + 1;
-  questionElement.innerHTML = questionNumber + ". " + currentQuestion.question;
-
-  currentQuestion.answer.forEach((answer) => {
-    const button = document.createElement("button");
-    button.innerHTML = answer.text;
-    button.classList.add("btn");
-    answerButton.appendChild(button);
-  });
+function checkAnswer(answer) {
+  if (answer === questions[currentQuestion].answer) {
+    score++;
+  }
+  disableButtons();
 }
+
+function disableButtons() {
+  trueBtn.disabled = true;
+  falseBtn.disabled = true;
+  nextBtn.style.display = "block";
+}
+
+function enableButtons() {
+  trueBtn.disabled = false;
+  falseBtn.disabled = false;
+  nextBtn.style.display = "none";
+}
+
+function nextQuestion() {
+  currentQuestion++;
+  if (currentQuestion < questions.length) {
+    displayQuestion();
+    enableButtons();
+  } else {
+    showResult();
+  }
+}
+
+function showResult() {
+  const percentage = (score / questions.length) * 100;
+  questionElement.textContent = `Your score is: ${score}/${
+    questions.length
+  } (${percentage.toFixed(2)}%)`;
+  document.getElementById("true-false-btn").style.display = "none";
+  nextBtn.style.display = "none";
+}
+
+trueBtn.addEventListener("click", () => checkAnswer(true));
+falseBtn.addEventListener("click", () => checkAnswer(false));
+nextBtn.addEventListener("click", nextQuestion);
+
+displayQuestion();
