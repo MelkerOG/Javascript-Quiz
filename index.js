@@ -53,9 +53,10 @@ icon.onclick = function () {
 };
 
 const questionElement = document.getElementById("question");
-const trueBtn = document.querySelector(".trueBtn");
-const falseBtn = document.querySelector(".falseBtn");
+const trueBtn = document.getElementById("trueBtn");
+const falseBtn = document.getElementById("falseBtn");
 const nextBtn = document.getElementById("next-btn");
+const resultElement = document.getElementById("result");
 
 let currentQuestion = 0;
 let score = 0;
@@ -63,3 +64,59 @@ let score = 0;
 function displayQuestion() {
   questionElement.textContent = questions[currentQuestion].question;
 }
+
+function checkAnswer(answer) {
+  if (answer === questions[currentQuestion].answer) {
+    score++;
+    resultElement.textContent = "Correct!";
+    resultElement.style.color = "rgb(57, 255, 20)";
+  } else {
+    resultElement.textContent = "Incorrect!";
+    resultElement.style.color = "red";
+  }
+
+  trueBtn.disabled = true;
+  falseBtn.disabled = true;
+  nextBtn.style.display = "block";
+}
+
+function nextQuestion() {
+  currentQuestion++;
+  if (currentQuestion < questions.length) {
+    displayQuestion();
+    resultElement.textContent = "";
+    trueBtn.disabled = false;
+    falseBtn.disabled = false;
+    nextBtn.style.display = "none";
+  } else {
+    showResult();
+  }
+}
+
+function showResult() {
+  // questionElement.textContent = `Quiz completed! Your score is: ${score}/${questions.length}`;
+
+  const percentage = (score / questions.length) * 100;
+
+  if (percentage >= 75) {
+    questionElement.textContent = `Well done! Your score is: ${score}/${questions.length}`;
+    questionElement.style.color = "green";
+  } else if (percentage >= 50) {
+    questionElement.textContent = `You passed.. barely.. Your score is: ${score}/${questions.length}`;
+    questionElement.style.color = "orange";
+  } else {
+    questionElement.textContent = ` Your score is: ${score}/${questions.length}`;
+    questionElement.style.color = "red";
+  }
+
+  trueBtn.style.display = "none";
+  falseBtn.style.display = "none";
+  resultElement.textContent = "";
+  nextBtn.style.display = "none";
+}
+
+trueBtn.addEventListener("click", () => checkAnswer(true));
+falseBtn.addEventListener("click", () => checkAnswer(false));
+nextBtn.addEventListener("click", nextQuestion);
+
+displayQuestion();
