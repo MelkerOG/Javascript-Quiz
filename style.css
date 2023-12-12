@@ -6,23 +6,70 @@
 }
 
 body {
-  background: lightblue;
+  background: var(--primary-color);
 }
 
+:root {
+  --primary-color: white;
+  --secondary-color: #001e4d;
+}
+
+.dark-theme {
+  --primary-color: #001e4d;
+  --secondary-color: white;
+}
+
+nav {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 60px;
+  margin-top: 20px;
+}
+
+#icon {
+  width: 40px;
+  cursor: pointer;
+}
+
+
+#icon:hover {
+  animation: bounce 0.8s;
+}
+
+@keyframes bounce {
+  0%, 20%, 60%, 100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  40% {
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+  }
+
+  80% {
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+  }
+}
+
+
+
+
 .app {
-  background: white;
+  background: var(--secondary-color);
   width: 90%;
   max-width: 600px;
-  margin: 100px auto 0;
+  margin: 50px auto 0;
   border-radius: 10px;
   padding: 30px;
 }
 
 .app h1 {
   font-size: 25px;
-  color: black;
+  color: var(--primary-color);
   font-weight: 600;
-  border-bottom: 5px dotted black;
+  border-bottom: 1px solid var(--primary-color);
   padding-bottom: 25px;
 }
 
@@ -32,7 +79,7 @@ body {
 
 .quiz-question h2 {
   font-size: 18px;
-  color: black;
+  color: var(--primary-color);
   font-weight: 600;
 }
 
@@ -51,7 +98,7 @@ body {
 }
 
 .trueBtn:hover, .falseBtn:hover {
-  background: #222;
+  background: black;
   color: #fff;
   font-weight: bold;
   transition: all ease-in-out 0.2s;
@@ -76,3 +123,5 @@ body {
   color: white;
   font-weight: bold;
 }
+
+
