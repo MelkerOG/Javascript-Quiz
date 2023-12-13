@@ -103,13 +103,13 @@ function showResult() {
   const percentage = (score / questions.length) * 100;
 
   if (percentage >= 75) {
-    questionElement.textContent = `Well done! You scored is: ${score}/${questions.length}`;
-    questionElement.style.color = "green";
+    questionElement.textContent = `Well done! You scored: ${score}/${questions.length}`;
+    questionElement.style.color = "rgb(57, 255, 20)";
   } else if (percentage >= 50) {
-    questionElement.textContent = `You passed, barely.. You scored is: ${score}/${questions.length}`;
+    questionElement.textContent = `You passed, barely.. You scored: ${score}/${questions.length}`;
     questionElement.style.color = "orange";
   } else {
-    questionElement.textContent = `Failed. You scored is: ${score}/${questions.length}`;
+    questionElement.textContent = `Failed. You scored: ${score}/${questions.length}`;
     questionElement.style.color = "red";
   }
 
