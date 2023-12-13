@@ -125,17 +125,19 @@ nextBtn.addEventListener("click", nextQuestion);
 
 displayQuestion();
 
-function resetQuiz() {
-  currentQuestion = 0;
-  score = 0;
+// function resetQuiz() {
+//   currentQuestion = 0;
+//   score = 0;
 
-  displayQuestion();
-  trueBtn.disabled = false;
-  falseBtn.disabled = false;
-  resultElement.textContent = "";
-  trueBtn.classList.remove("selected");
-  falseBtn.classList.remove("selected");
-  nextBtn.style.display = "none";
-}
+//   displayQuestion();
 
-resetBtn.addEventListener("click", resetQuiz);
+//   trueBtn.disabled = false;
+//   falseBtn.disabled = false;
+
+//   resultElement.textContent = "";
+//   questionElement.style.color = "";
+//   trueBtn.classList.remove("selected");
+//   falseBtn.classList.remove("selected");
+// }
+
+// resetBtn.addEventListener("click", resetQuiz);
