@@ -57,6 +57,7 @@ const trueBtn = document.getElementById("trueBtn");
 const falseBtn = document.getElementById("falseBtn");
 const nextBtn = document.getElementById("next-btn");
 const resultElement = document.getElementById("result");
+const resetBtn = document.getElementById("resetBtn");
 
 let currentQuestion = 0;
 let score = 0;
@@ -74,6 +75,9 @@ function checkAnswer(answer) {
     resultElement.textContent = "Incorrect!";
     resultElement.style.color = "red";
   }
+
+  // const selectedButton = answer ? trueBtn : falseBtn;
+  // selectedButton.classList.add("selected");
 
   trueBtn.disabled = true;
   falseBtn.disabled = true;
@@ -99,13 +103,13 @@ function showResult() {
   const percentage = (score / questions.length) * 100;
 
   if (percentage >= 75) {
-    questionElement.textContent = `Well done! Your score is: ${score}/${questions.length}`;
+    questionElement.textContent = `Well done! You scored is: ${score}/${questions.length}`;
     questionElement.style.color = "green";
   } else if (percentage >= 50) {
-    questionElement.textContent = `You passed.. barely.. Your score is: ${score}/${questions.length}`;
+    questionElement.textContent = `You passed, barely.. You scored is: ${score}/${questions.length}`;
     questionElement.style.color = "orange";
   } else {
-    questionElement.textContent = ` Your score is: ${score}/${questions.length}`;
+    questionElement.textContent = `Failed. You scored is: ${score}/${questions.length}`;
     questionElement.style.color = "red";
   }
 
@@ -120,3 +124,18 @@ falseBtn.addEventListener("click", () => checkAnswer(false));
 nextBtn.addEventListener("click", nextQuestion);
 
 displayQuestion();
+
+function resetQuiz() {
+  currentQuestion = 0;
+  score = 0;
+
+  displayQuestion();
+  trueBtn.disabled = false;
+  falseBtn.disabled = false;
+  resultElement.textContent = "";
+  trueBtn.classList.remove("selected");
+  falseBtn.classList.remove("selected");
+  nextBtn.style.display = "none";
+}
+
+resetBtn.addEventListener("click", resetQuiz);
