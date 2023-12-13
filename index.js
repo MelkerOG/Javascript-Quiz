@@ -16,15 +16,15 @@ const questions = [
     answer: false,
   },
   {
-    question: "HTML stands for Hyper Text Markup Language",
+    question: "HTML stands for Hyper Text Markup Language.",
     answer: true,
   },
   {
-    question: "CSS is a programmig language",
+    question: "CSS is a programmig language.",
     answer: false,
   },
   {
-    question: "JavaScript is a programmig language",
+    question: "JavaScript is a programmig language.",
     answer: true,
   },
   {
@@ -36,7 +36,7 @@ const questions = [
     answer: true,
   },
   {
-    question: "Switzerland is part of the European Union",
+    question: "Switzerland is part of the European Union.",
     answer: false,
   },
 ];
@@ -109,7 +109,7 @@ function showResult() {
     questionElement.textContent = `You passed, barely.. You scored: ${score}/${questions.length}`;
     questionElement.style.color = "orange";
   } else {
-    questionElement.textContent = `Failed. You scored: ${score}/${questions.length}`;
+    questionElement.textContent = `You failed the quiz. You scored: ${score}/${questions.length}`;
     questionElement.style.color = "red";
   }
 

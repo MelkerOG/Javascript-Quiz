@@ -112,6 +112,7 @@ nav {
   background: var(--primary-color);
   color: var(--secondary-color);
   font-weight: 500;
+  font-size: 18px;
   width: 150px;
   border: 0;
   padding: 10px;
@@ -119,6 +120,10 @@ nav {
   border-radius: 5px;
   cursor: pointer;
   display: none;
+}
+
+#next-btn:hover {
+  text-decoration: underline;
 }
 
 #trueBtn:focus, #falseBtn:focus {
